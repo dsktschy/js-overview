@@ -20,6 +20,7 @@ $mainFont: YakuHanJP_Noto, 'Noto Sans JP', sans-serif;
 $headingFont: YakuHanJP_Noto, 'Noto Sans JP', sans-serif;
 $headingTextShadow: none;
 $headingLetterSpacing: 0.03em;
+$headingLineHeight: 1.5;
 $headingTextTransform: none;
 $headingFontWeight: 600;
 $linkColor: mediumseagreen;
@@ -47,6 +48,7 @@ section.has-dark-background {
 .reveal {
   li {
     margin: 1em 0;
+    line-height: 1.5;
     letter-spacing: $headingLetterSpacing;
   }
 }
