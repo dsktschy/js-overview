@@ -46,8 +46,8 @@ notes:
 ---
 
 ### 2-2. Node.js
-* リモートマシンでの用途
-* ローカルマシンでの用途
+1. リモートマシンでの用途
+2. ローカルマシンでの用途
 
 notes:
 * Node.jsは、WebブラウザのJavaScript実行エンジンを、OS上で動作するようにしたもの。
@@ -55,7 +55,7 @@ notes:
 
 ---
 
-#### 2-2-1. リモートマシンでの用途 | Node.js
+#### 1. リモートマシンでの用途 | 2-2. Node.js
 * Webサーバー
 * アプリケーションサーバー
 * FaaS（Function as a Service）
@@ -68,7 +68,7 @@ notes:
 
 ---
 
-#### 2-2-2. ローカルマシンでの用途 | Node.js
+#### 2. ローカルマシンでの用途 | 2-2. Node.js
 * タスクランナー
 * ネイティブアプリ開発環境
 * デスクトップアプリエンジン
@@ -88,7 +88,10 @@ notes:
 * JavaScriptの様々な用途の中から、Webブラウザでの用途に焦点を絞る。
 * 学校やオンラインの講座で一般的に教えられているのがこの用途。
 * それを学んだ先で、何が出来るようになるかを知る。
-* 基本、重要、頻出の概念を抜き出して紹介する。
+* 基本、重要、頻出と思われる概念を、一部抜き出して紹介する。
+* 各項目とも実例のCodePenを用意してある。
+* 体験版の方は、あと肝となる部分だけを追記すれば、完成する状態。
+* まずは完成版を見ず、添えてある参考情報をもとに埋めてみてほしい。
 
 ---
 
@@ -106,6 +109,34 @@ notes:
 
 ---
 
+#### 体験してみよう | 3-1. イベントハンドリング
+* <a href="https://codepen.io/dsktschy/pen/rNaxBvZ" target="_blank">体験版CodePen</a>
+  * 参考
+
+```js
+
+/**
+ * Element # addEventListener()
+ * 要素で発生する任意のイベントに、関数を結びつける。
+ * 
+ * 例: target要素の、clickイベントに、listener関数を結びつける。
+ */
+target.addEventListener('click', listener)
+
+
+```
+
+* <a href="https://codepen.io/dsktschy/pen/PowPgKL" target="_blank">完成版CodePen</a>
+
+notes:
+* 実際には、addEventListenerという関数で、イベントハンドリングが実現される。
+* jQueryでいうところのon関数。
+* 要素と関数は用意してあるので、addEventListenerでそれらを結びつけてほしい。
+* 結びつけたら、円形をクリックしてみてほしい。
+* 円形を震わせる処理が、クリックに結びついている。
+
+---
+
 ### 3-2. DOMを扱う
 * DOMを扱い、表示内容を変更することが出来る。
   * **DOM**（Document Object Model）:<br>HTMLをJavaScriptから扱えるオブジェクトで表したもの
@@ -114,8 +145,36 @@ notes:
 notes:
 * DOMを扱うことで、表示内容を自由に変更することができる。
 * HTMLのclass属性を書き換えて、表示/非表示や位置を変化させられる。（例: 表示非表示->アコーディオン, 位置->スライダー）
-* 要素を作成、追加したり、削除したりもできる。
+* 要素を作成、挿入したり、削除したりもできる。
 * イベントハンドリングと組み合わせて、任意のタイミングで実行できる。
+
+---
+
+#### 体験してみよう | 3-2. DOMを扱う
+* <a href="https://codepen.io/dsktschy/pen/dyPGbKb" target="_blank">体験版CodePen</a>
+  * 参考
+
+```js
+
+/**
+ * Element # appendChild()
+ * 対象要素の最後の子要素として、別の要素を挿入する。
+ * 
+ * 例: target要素の最後の子要素として、element要素を挿入する。
+ */
+target.appendChild(element)
+
+
+```
+
+* <a href="https://codepen.io/dsktschy/pen/NWPGmaK" target="_blank">完成版CodePen</a>
+
+notes:
+* DOM操作の一例として、要素挿入のappendChildを使用してみる。
+* jQueryでいうところのappend関数。
+* appendChildを使用して、コメントで指定された通りに、要素を要素に挿入してほしい。
+* 挿入処理が書けたら、画面をクリックしてみてほしい。
+* 複製された円形が、画面に追加されていく。
 
 ---
 
@@ -134,6 +193,48 @@ notes:
 
 ---
 
+#### 体験してみよう | 3-3. Ajax
+* <a href="https://codepen.io/dsktschy/pen/RwNrbJW" target="_blank">体験版CodePen</a>
+  * 参考
+
+```js
+
+/**
+ * fetch()
+ * 指定されたURLに対してリクエストを送信する。
+ * 
+ * 例: https://sample.com/api/ に対してリクエストを送信する。
+ *     成功した場合はonSuccess関数を実行し、
+ *     失敗した場合はonFail関数を実行する。
+ */
+fetch('https://sample.com/api/')
+  .then(onSuccess)
+  .catch(onFail)
+
+
+```
+
+* <a href="https://codepen.io/dsktschy/pen/yLyYrzO" target="_blank">完成版CodePen</a>
+
+notes:
+* fetch関数を使用して、Ajaxを実現してみる。
+* jQueryでいうところのajax関数。
+* 後ろにthen関数とcatch関数をつなげ、成功時と失敗時に実行される関数を決める。
+* コメントで指定されたとおりに、fetch関数を実行してみてほしい。
+* 記述が完了したら、画面下のフォームに、適当な画像URLを入力し、右のApplyボタンを押してみてほしい。
+* 次のページの画像を使用してくれてもかまわない。
+* カラーパレット抽出サービスに画像URLを送信し、その結果を円形の色に反映している。
+
+---
+
+#### 画像URLサンプル | 3-3. Ajax
+
+![プールで麻雀](https://liginc.co.jp/wp-content/themes/ligtheme/assets/images/introduction-media-contentcreation.jpg)
+
+https://liginc.co.jp/wp-content/themes/ligtheme/assets/images/introduction-media-contentcreation.jpg
+
+---
+
 ### 3-4. Canvas
 * 2D、3Dのグラフィックの描画、画像の解析ができる。
   * **Canvas**: <br>グラフィックを扱うHTML要素。JavaScriptから操作する。
@@ -149,6 +250,34 @@ notes:
 
 ---
 
+#### 体験してみよう | 3-4. Canvas
+* <a href="https://codepen.io/dsktschy/pen/BayjBVp" target="_blank">体験版CodePen</a>
+  * 参考
+
+```js
+
+/**
+ * HTMLCanvasElement # getContext()
+ * canvas要素から、RenderingContextオブジェクトを生成する。
+ * 
+ * 例: canvas要素から、2dモードで、RenderingContextオブジェクトを生成し、
+ *     生成されたオブジェクトを変数ctxに格納する。
+ */
+const ctx = canvas.getContext('2d')
+
+
+```
+
+* <a href="https://codepen.io/dsktschy/pen/povoJdm" target="_blank">完成版CodePen</a>
+
+notes:
+* Canvasを2dモードで利用開始してみる。
+* コメントのとおりに、CanvasのRenderingContextオブジェクトを生成してみてほしい。
+* 記述が完了したら、画面をクリックしてみてほしい。
+* Canvasによって、モナリザの絵から1ピクセル毎の色情報が解析され、それを元に円形でモナリザが再現されていく。
+
+---
+
 ### 3-5. WebAudioAPI（おまけ）
 * 音の再生、生成、解析ができる。
   * **WebAudioAPI**: <br>音声を扱うための機能。JavaScriptから操作する。
@@ -156,10 +285,34 @@ notes:
   * 👉 **効果音再生や、音声を引き金とした処理の実行ができる！**
 
 notes:
+* これについては重要、必須というわけではないが、ここまで出来るという例として紹介しておく。
 * 音声ファイルの再生、加工、解析ができる。
 * 音声の生成も可能で、その生成物も再生、加工、解析できる。
 * 既に広く利用されているが、まだ標準化しておらず、今後も仕様変更が予想されるため、注意が必要。
 * イベントハンドリングと組み合わせて、任意のタイミングで実行できる。
+
+---
+
+#### 体験してみよう | 3-5. WebAudioAPI（おまけ）
+* <a href="https://codepen.io/dsktschy/pen/wvBvKzV" target="_blank">完成版</a>
+  * 参考
+
+```js
+
+/**
+ * new AudioContext()
+ * AudioContextオブジェクトを生成する。
+ * 
+ * 例: AudioContextオブジェクトを生成し、生成されたオブジェクトを変数ctxに格納する。
+ */
+const ctx = new AudioContext()
+
+
+```
+
+notes:
+* CodePenをひらき、一度画面をクリックしたあと、拍手してみてほしい。
+* WebAudioAPIの機能によって、音量が解析され、その大きさに応じて徐々に画像が描かれていく。
 
 ===
 
