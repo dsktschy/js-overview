@@ -56,8 +56,13 @@ module.exports = grunt => {
 			}
 		},
 
-		autoprefixer: {
-			core: {
+		postcss: {
+			options: {
+				processors: [
+					require('autoprefixer')()
+				]
+			},
+			dist: {
 				src: 'css/reveal.css'
 			}
 		},
@@ -172,10 +177,10 @@ module.exports = grunt => {
 	grunt.registerTask( 'css-themes', [ 'sass:themes' ] );
 
 	// Core framework CSS
-	grunt.registerTask( 'css-core', [ 'sass:core', 'autoprefixer', 'cssmin' ] );
+	grunt.registerTask( 'css-core', [ 'sass:core', 'postcss', 'cssmin' ] );
 
 	// All CSS
-	grunt.registerTask( 'css', [ 'sass', 'autoprefixer', 'cssmin' ] );
+	grunt.registerTask( 'css', [ 'sass', 'postcss', 'cssmin' ] );
 
 	// Package presentation to archive
 	grunt.registerTask( 'package', [ 'default', 'zip' ] );
